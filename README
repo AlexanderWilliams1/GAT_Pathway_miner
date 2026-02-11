@@ -24,12 +24,3 @@ This repository implements a Graph Attention Network (GATv2) for link prediction
 6. **Novel Edge Prediction**: Predict top-scoring novel regulatory interactions
 
 ## Installation
-'''bash
-# Clone repository
-git clone https://github.com/yourusername/GATv2-GRN-prediction.git
-cd GATv2-GRN-prediction
-'''
-# Install dependencies
-'''
-pip install torch torch-geometric optuna pandas numpy scikit-learn networkx matplotlib
-'''
