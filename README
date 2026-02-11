@@ -1,4 +1,4 @@
-## Usage
+** Usage
 1. Prepare your data:
    - Gene expression matrix (TSV format, genes × samples)
    - Prior network edges (CSV with 'source' and 'target' columns)
@@ -14,7 +14,7 @@ net_df = pd.read_csv('/path/to/your/network_edges.csv')
 python GAT2.4.py
 ```
 
-## Output Files
+** Output Files
 - **5fold_cv_results.csv**: Performance metrics for each fold
 - **Predicted_novel_edges_top20.csv**: Top 20 predicted novel interactions with confidence scores
 - Console output includes:
@@ -23,12 +23,12 @@ python GAT2.4.py
   - Cross-validation summary
   - Score distribution of top predictions
 
-## Performance Metrics
+** Performance Metrics
 - **AUROC**: Area Under Receiver Operating Characteristic Curve
 - **AUPRC**: Area Under Precision-Recall Curve (primary optimization target)
 - **Precision@100**: Precision of top 100 predictions
 
-## Hyperparameter Search Space
+** Hyperparameter Search Space
 - Hidden channels: {32, 64}
 - Output channels: {16, 32}
 - Attention heads: {2, 3}
@@ -36,29 +36,29 @@ python GAT2.4.py
 - Dropout: 0.4 to 0.5
 - Weight decay: 1e-3 to 1e-2 (log scale)
 
-## Dataset Requirements
+** Dataset Requirements
 - **Expression Data**: Normalized gene expression matrix
 - **Prior Network**: Known TF-target interactions (can be sparse)
 - **Nodes**: Should match between expression data and network
 
-## Technical Notes
+** Technical Notes
 - **Random Seeds**: Fixed for reproducibility
 - **Early Stopping**: Patience of 15-20 epochs based on validation AUPRC
 - **Negative Sampling**: 2:1 negative:positive ratio to reflect biological network sparsity
 - **Disjoint Edges**: 30% of training edges used only for supervision, not message passing
 
-## Applications
+** Applications
 - Discovery of novel gene regulatory interactions
 - Extension of known biological pathways
 - Prioritization of edges for experimental validation
 - Network-based biomarker discovery
 
-## Citation
+** Citation
 If you use this code, please cite:
 - GATv2: Brody et al., "How Attentive are Graph Attention Networks?" ICLR 2022
 - Optuna: Akiba et al., "Optuna: A Next-generation Hyperparameter Optimization Framework" KDD 2019
 - Relevant biological data sources
 
-## License
+** License
 [Specify your license here, e.g., MIT License]
 
