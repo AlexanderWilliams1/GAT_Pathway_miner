@@ -23,11 +23,11 @@ This repository implements a Graph Attention Network (GATv2) for link prediction
 5. Cross-validation: 5-fold CV for robust performance assessment
 6. Novel Edge Prediction: Predict top-scoring novel regulatory interactions
 
- Installation
+ Usage
 ```bash
  Clone repository
 git clone https://github.com/AlexanderWilliams1/GAT_Pathway_miner/blob/main/GAT_Pathway_Miner.py
-cd GATv2-GRN-prediction
+python3 GAT_Pathway_Miner.py
 
  Install dependencies
 pip install torch torch-geometric optuna pandas numpy scikit-learn networkx matplotlib
