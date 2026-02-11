@@ -1,4 +1,4 @@
-# GATv2-Based Gene Regulatory Network Link Prediction
+# CNN Crypto Trader# GATv2-Based Gene Regulatory Network Link Prediction
 Overview
 This repository implements a Graph Attention Network (GATv2) for link prediction in biological networks, specifically designed for identifying novel gene regulatory interactions. The model combines prior knowledge from biological databases with gene expression data to predict previously uncharacterized regulatory relationships.
 
