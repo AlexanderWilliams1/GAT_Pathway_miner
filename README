@@ -1,64 +1,35 @@
- Usage
-1. Prepare your data:
-   - Gene expression matrix (TSV format, genes × samples)
-   - Prior network edges (CSV with 'source' and 'target' columns)
+# GATv2-Based Gene Regulatory Network Link Prediction
 
-2. Update file paths in `GAT2.4.py`:
-   ```python
-   df_tcga = pd.read_csv('/path/to/your/expression_data.tsv', sep='\t', index_col=0)
-   net_df = pd.read_csv('/path/to/your/network_edges.csv')
-   ```
+## Overview
+This repository implements a Graph Attention Network (GATv2) for link prediction in biological networks, specifically designed for identifying novel gene regulatory interactions. The model combines prior knowledge from biological databases with gene expression data to predict previously uncharacterized regulatory relationships.
 
-3. Run the complete pipeline:
-   ```bash
-   python GAT2.4.py
-   ```
+## Key Features
+- **Advanced GATv2 Architecture**: Implements GATv2Conv with LayerNorm for improved attention mechanisms
+- **Comprehensive Evaluation**: Reports AUROC, AUPRC, and Precision@K metrics
+- **Robust Validation**: 5-fold cross-validation with Bayesian hyperparameter optimization
+- **Biological Network Specific**: Designed for sparse, imbalanced biological networks
+- **Data Leakage Prevention**: Careful edge splitting strategy to avoid contamination
 
- Output Files
-- 5fold_cv_results.csv: Performance metrics for each fold
-- Predicted_novel_edges_top20.csv: Top 20 predicted novel interactions with confidence scores
-- Console output includes:
-  - Network statistics (size, density, imbalance ratio)
-  - Hyperparameter optimization results
-  - Cross-validation summary
-  - Score distribution of top predictions
+## Model Architecture
+- **Encoder**: Two-layer GATv2 with multi-head attention and ELU activations
+- **Decoder**: Dot product decoder for edge prediction
+- **Regularization**: Layer normalization and dropout for improved generalization
 
- Performance Metrics
-- AUROC: Area Under Receiver Operating Characteristic Curve
-- AUPRC: Area Under Precision-Recall Curve (primary optimization target)
-- Precision@100: Precision of top 100 predictions
+## Workflow
+1. **Data Preparation**: Align gene expression data with prior network edges
+2. **Network Construction**: Build graph from TF-target interactions
+3. **Edge Splitting**: Split edges into training/validation/test sets
+4. **Hyperparameter Optimization**: Bayesian optimization with Optuna
+5. **Cross-validation**: 5-fold CV for robust performance assessment
+6. **Novel Edge Prediction**: Predict top-scoring novel regulatory interactions
 
- Hyperparameter Search Space
-- Hidden channels: {32, 64}
-- Output channels: {16, 32}
-- Attention heads: {2, 3}
-- Learning rate: 1e-4 to 1e-2 (log scale)
-- Dropout: 0.4 to 0.5
-- Weight decay: 1e-3 to 1e-2 (log scale)
-
- Dataset Requirements
-- Expression Data: Normalized gene expression matrix
-- Prior Network: Known TF-target interactions (can be sparse)
-- Nodes: Should match between expression data and network
-
- Technical Notes
-- Random Seeds: Fixed for reproducibility
-- Early Stopping: Patience of 15-20 epochs based on validation AUPRC
-- Negative Sampling: 2:1 negative:positive ratio to reflect biological network sparsity
-- Disjoint Edges: 30% of training edges used only for supervision, not message passing
-
- Applications
-- Discovery of novel gene regulatory interactions
-- Extension of known biological pathways
-- Prioritization of edges for experimental validation
-- Network-based biomarker discovery
-
- Citation
-If you use this code, please cite:
-- GATv2: Brody et al., "How Attentive are Graph Attention Networks?" ICLR 2022
-- Optuna: Akiba et al., "Optuna: A Next-generation Hyperparameter Optimization Framework" KDD 2019
-- Relevant biological data sources
-
- License
-[Specify your license here, e.g., MIT License]
-
+## Installation
+'''bash
+# Clone repository
+git clone https://github.com/yourusername/GATv2-GRN-prediction.git
+cd GATv2-GRN-prediction
+'''
+# Install dependencies
+'''
+pip install torch torch-geometric optuna pandas numpy scikit-learn networkx matplotlib
+'''
