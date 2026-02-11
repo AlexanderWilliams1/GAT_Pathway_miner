@@ -1,33 +1,33 @@
-# GATv2-Based Gene Regulatory Network Link Prediction
+ GATv2-Based Gene Regulatory Network Link Prediction
 
-## Overview
+ Overview
 This repository implements a Graph Attention Network (GATv2) for link prediction in biological networks, specifically designed for identifying novel gene regulatory interactions. The model combines prior knowledge from biological databases with gene expression data to predict previously uncharacterized regulatory relationships.
 
-## Key Features
-- **Advanced GATv2 Architecture**: Implements GATv2Conv with LayerNorm for improved attention mechanisms
-- **Comprehensive Evaluation**: Reports AUROC, AUPRC, and Precision@K metrics
-- **Robust Validation**: 5-fold cross-validation with Bayesian hyperparameter optimization
-- **Biological Network Specific**: Designed for sparse, imbalanced biological networks
-- **Data Leakage Prevention**: Careful edge splitting strategy to avoid contamination
+ Key Features
+- Advanced GATv2 Architecture: Implements GATv2Conv with LayerNorm for improved attention mechanisms
+- Comprehensive Evaluation: Reports AUROC, AUPRC, and Precision@K metrics
+- Robust Validation: 5-fold cross-validation with Bayesian hyperparameter optimization
+- Biological Network Specific: Designed for sparse, imbalanced biological networks
+- Data Leakage Prevention: Careful edge splitting strategy to avoid contamination
 
-## Model Architecture
-- **Encoder**: Two-layer GATv2 with multi-head attention and ELU activations
-- **Decoder**: Dot product decoder for edge prediction
-- **Regularization**: Layer normalization and dropout for improved generalization
+ Model Architecture
+- Encoder: Two-layer GATv2 with multi-head attention and ELU activations
+- Decoder: Dot product decoder for edge prediction
+- Regularization: Layer normalization and dropout for improved generalization
 
-## Workflow
-1. **Data Preparation**: Align gene expression data with prior network edges
-2. **Network Construction**: Build graph from TF-target interactions
-3. **Edge Splitting**: Split edges into training/validation/test sets
-4. **Hyperparameter Optimization**: Bayesian optimization with Optuna
-5. **Cross-validation**: 5-fold CV for robust performance assessment
-6. **Novel Edge Prediction**: Predict top-scoring novel regulatory interactions
+ Workflow
+1. Data Preparation: Align gene expression data with prior network edges
+2. Network Construction: Build graph from TF-target interactions
+3. Edge Splitting: Split edges into training/validation/test sets
+4. Hyperparameter Optimization: Bayesian optimization with Optuna
+5. Cross-validation: 5-fold CV for robust performance assessment
+6. Novel Edge Prediction: Predict top-scoring novel regulatory interactions
 
-## Installation
+ Installation
 ```bash
-# Clone repository
+ Clone repository
 git clone https://github.com/yourusername/GATv2-GRN-prediction.git
 cd GATv2-GRN-prediction
 
-# Install dependencies
+ Install dependencies
 pip install torch torch-geometric optuna pandas numpy scikit-learn networkx matplotlib
