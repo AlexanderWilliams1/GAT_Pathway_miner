@@ -1,34 +1,26 @@
-GATv2-Based Gene Regulatory Network Link Prediction
+**GATv2-Based Gene Regulatory Network Link Prediction**
 Overview
 This repository implements a Graph Attention Network (GATv2) for link prediction in biological networks, specifically designed for identifying novel gene regulatory interactions. The model combines prior knowledge from biological databases with gene expression data to predict previously uncharacterized regulatory relationships.
 
+
 Key Features
 Advanced GATv2 Architecture: Implements GATv2Conv with LayerNorm for improved attention mechanisms
-
 Comprehensive Evaluation: Reports AUROC, AUPRC, and Precision@K metrics
-
 Robust Validation: 5-fold cross-validation with Bayesian hyperparameter optimization
-
 Biological Network Specific: Designed for sparse, imbalanced biological networks
-
 Data Leakage Prevention: Careful edge splitting strategy to avoid contamination
+
 
 Model Architecture
 Encoder: Two-layer GATv2 with multi-head attention and ELU activations
-
 Decoder: Dot product decoder for edge prediction
-
 Regularization: Layer normalization and dropout for improved generalization
+
 
 Workflow
 Data Preparation: Align gene expression data with prior network edges
-
 Network Construction: Build graph from TF-target interactions
-
 Edge Splitting: Split edges into training/validation/test sets
-
 Hyperparameter Optimization: Bayesian optimization with Optuna
-
 Cross-validation: 5-fold CV for robust performance assessment
-
 Novel Edge Prediction: Predict top-scoring novel regulatory interactions
